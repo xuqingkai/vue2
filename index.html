@@ -41,8 +41,8 @@
     </el-row>
 </div>
 <script>
-    const { createApp, ref } = Vue;
-    var app = createApp({
+
+    var config = {
         props: {
 
         },
@@ -133,9 +133,10 @@
         mounted() {
             this.restaurants = this.loadAll();
         },
-    });
+    };
     //app.component('TodoDeleteButton', TodoDeleteButton)//这使得 TodoDeleteButton 在应用的任何地方都是可用的
-    app.mount('#vue2-app')
+    var Ctor = Vue.extend(config);
+    new Ctor().$mount('#vue2-ap');
 </script>
 </body>
 </html>
