@@ -1,0 +1,66 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>index</title>
+    <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+    <!-- 引入样式 -->
+    <link href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" rel="stylesheet">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<div id="vue2-app">
+    <el-form :inline="true" labelPosition="top" :model="detail" label-width="80px">
+      <el-autocomplete
+        class="inline-input"
+        multiple
+        v-model="detail.sport_type"
+        clearable
+        :fetch-suggestions="querySearch"
+
+      ></el-autocomplete>
+    </el-form>
+</div>
+<script>
+
+    var config = {
+        props: {
+
+        },
+        data() {
+            return {
+              detail: {
+                sport_type: ''
+              }
+            }
+        },
+        computed: {
+            
+        },
+        watch: {
+            
+        },
+        methods: {
+           querySearch(queryString, cb){
+            return cb([{ "value": "跑步"},{"value": "跳舞"}]);
+          },
+          handleSelect(e) {
+            var ele=document.getElementsByClassName('el-autocomplete-suggestion');
+            for(var i in ele){
+                //ele[0].style.display='none';
+            }
+          },
+        }
+    };
+    //app.component('TodoDeleteButton', TodoDeleteButton)//这使得 TodoDeleteButton 在应用的任何地方都是可用的
+    var Ctor = Vue.extend(config);
+    new Ctor().$mount('#vue2-app');
+</script>
+</body>
+</html>
