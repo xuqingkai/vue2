@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue2 + Polyfill (Chrome49)</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{ message }}</h2>
+    <p>数组 includes 测试: {{ list.includes(2) }}</p>
+    <p>数组 find 测试: {{ list.find(n => n > 2) }}</p>
+    <p>Object.assign 测试: {{ merged.foo }} {{ merged.bar }}</p>
+  </div>
+
+  <!-- ===== Polyfills for Chrome49 ===== -->
+  <!-- Promise (Vue2 必需) -->
+  <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+
+  <!-- core-js@2: ES6 API polyfills (Object.assign, Array.includes, Array.find 等) -->
+  <script src="https://cdn.jsdelivr.net/npm/core-js@2.6.12/client/shim.min.js"></script>
+
+  <!-- 可选: fetch (如果项目中需要) -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js"></script> -->
+
+  <!-- 可选: URL / URLSearchParams polyfill -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/url-polyfill@1.1.12/url-polyfill.min.js"></script> -->
+
+  <!-- ===== Vue2 ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+
+  <script>
+    // Vue 示例代码
+    new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue2 + Chrome49!',
+        list: [1, 2, 3, 4],
+        merged: Object.assign({}, { foo: 'foo' }, { bar: 'bar' })
+      }
+    })
+  </script>
+</body>
+</html>
